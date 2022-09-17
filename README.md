@@ -87,7 +87,7 @@ class DebuggedApplication:
 """:param console_path: the URL for a general purpose console."""
 ```
 
-If we scroll further down to the class entry point we see the `console_path` variable is by default set to `/console`:
+If we scroll further down to where the variables are defined in the class we see `console_path` is by default set to `/console`:
 ```python
 def __init__(
         self,
