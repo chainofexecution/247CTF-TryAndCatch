@@ -22,7 +22,7 @@ A quick glance over the source code gleans that:
 ```python
 from flask import Flask, request
 ```
-- Appending /calculator to the URL will run the app instead of showing it's source:
+- Appending `/calculator` to the URL will run the app instead of showing it's source:
 ```python
 @app.route('/calculator')
 ```
