@@ -60,7 +60,7 @@ Instead, we can just try to get access to the debugger and use it to help us pro
 We noted earlier the debugger was left running and a quick look at this page from Werkzeug's documentation provides us with a good indicator we are on the right track:
 ![danger](https://user-images.githubusercontent.com/92492482/190875292-d2df541b-c99b-4b10-9db1-52c3feeb6241.png)
 
-We want to look over Werkzeug's code to find out more about how the debugger works as the online documentation only shows ways of interaction through the source code.
+We want to look over Werkzeug's code to find out more about how the debugger works as the documentation only shows ways of interaction through the source code.
 We can install Werkzeug using pip:
 ![pip](https://user-images.githubusercontent.com/92492482/190876152-d410d797-45e5-4aa1-842f-06c416d9cf11.png)
 
