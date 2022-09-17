@@ -127,8 +127,3 @@ The vulnerability we exploited in this challenge was Arbitrary Code Execution. T
 
 To mitigate this type of attack the developer could have disabled the debugger console for production builds.
 Furthermore, the Werkzeug documentation highly recommends developers set a pin to authenticate with before being allowed access to a debug console to help prevent this type of scenario from happening.
-
-
-
-
-
