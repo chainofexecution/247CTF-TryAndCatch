@@ -7,7 +7,7 @@ This challenge is a great showcase of what can happen when a developer does not 
 - Debian 11
 - Firefox ESR (for interface with the webapp)
 - Atom (for easy viewing/editing of Python scripts)
-- Terminator (for installing and navigatimg through Python modules)
+- Terminator (for installing and navigating through Python modules)
 
 ## The challenge:
 
