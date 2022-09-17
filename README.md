@@ -14,6 +14,7 @@ This challenge is a great showcase of what can happen when a developer does not 
 ![challenge](https://user-images.githubusercontent.com/92492482/190871980-0840a1a9-b7f3-488b-9970-892196535845.png)
 
 We start off in a plaintext file that is the source code for the app we will be exploiting in this challenge.
+
 ![target_app](https://user-images.githubusercontent.com/92492482/190872004-3be6a474-0c78-47e0-b9c4-ad15ed88f89f.png)
 
 A quick glance over the source code gleans that:
@@ -49,26 +50,31 @@ def safe_cast(val, to_type):
         return None
 ```
 
-If we don't get arround the error handling, the None type object returned from `safe_cast()` will signal the `flag()` function to simply give us an error message through a return, not through the exception handler:
+If we can't get arround `safe_cast()`'s error handling, the None type object returned from `safe_cast()` will signal the `flag()` function to simply give us a message about the exception through `flag()`'s `return` and we won't ever get the exception from the debugger:
 ```python
 if None in (number_1, number_2, operation) or not operation in calculate:
         return "Invalid calculator parameters"
 ```
 
-Instead, we can just try to get access to the debugger and use it to help us produce an exception.
+Instead of having to fight with `safe_cast()`'s sanitized input and error handling, we can just try to get access to the debugger's console directly and use it to help us produce an exception.
 
-We noted earlier the debugger was left enabled and a quick look at [this page](https://werkzeug.palletsprojects.com/en/2.2.x/debug/) from Werkzeug's documentation provides us with a good indicator we are on the right track:
+We noted earlier the debugger was left enabled and a quick look at [this page](https://werkzeug.palletsprojects.com/en/2.2.x/debug/) from Werkzeug's documentation provides us with a good indicator that we are on the right track:
+
 ![danger](https://user-images.githubusercontent.com/92492482/190875292-d2df541b-c99b-4b10-9db1-52c3feeb6241.png)
-What this cautionary mesaage specifically tells us is if we get access to the debugger console we can execute arbitrary code on the server, so we probably wont even have to trigger an exception to get the flag, and can instead look for it on the server's file system (more on this below)
+
+What this cautionary mesaage tells us is if we get access to the debugger console we can execute arbitrary code on the server, so we probably wont even have to trigger an exception to get the flag, and can instead look for it on the server's file system (more on this below)
 
 We want to look over Werkzeug's code to find out more about how the debugger works as the documentation only shows ways of interaction through the source code.
 We can install Werkzeug using pip:
+
 ![pip](https://user-images.githubusercontent.com/92492482/190876152-d410d797-45e5-4aa1-842f-06c416d9cf11.png)
 
 To find out where pip has stored Werkzeug's module files we can use the Python interpreter to print out the contents of `sys.path`, which is the object Python uses to store various paths that are important to the Python installation:
+
 ![pip_werkzeug](https://user-images.githubusercontent.com/92492482/190876534-1ced9e2c-48d7-4103-aa0d-9af12cc12915.png)
 
 We are interested in the `__init__.py` inside the debug directory:
+
 ![werkzeug_files](https://user-images.githubusercontent.com/92492482/190876779-9506f38d-f7d6-497f-a801-7e460a86e375.png)
 
 We can see in a comment at the top of the `DebuggedApplication()` class that there is a variable for a default URL path to the console:
@@ -96,6 +102,7 @@ def __init__(
 ```
 
 Appending `/console` to the end of the site's URL, as if it were another application route like the `/calculator`, provides a Python interpreter prompt!
+
 ![console](https://user-images.githubusercontent.com/92492482/190878137-886d4835-8b51-4334-a8fd-c5c917657787.png)
 
 We can use this prompt to execute Python code on the machine hosting the app.
@@ -111,6 +118,7 @@ print(stdout)
 Note that when using the Python interpreter, you can shorten it to one line as long as you keep the semi-colons in between the 'lines'.
 
 `ls` shows us there is a `flag.txt` file in our directory:
+
 ![command1](https://user-images.githubusercontent.com/92492482/190877913-ddaae118-67c9-4e12-bfc1-46df689bb660.png)
 
 
@@ -120,7 +128,8 @@ flag = open("./flag.txt", "rt");
 print(flag.read())
 ```
 
-## 🥳 Flag obtained! 🎉: 
+🥳 Flag obtained! 🎉: 
+
 ![command2](https://user-images.githubusercontent.com/92492482/190878136-996a361d-8c56-4edf-8843-d8b8233c5964.png)
 
 # Summary
