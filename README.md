@@ -108,13 +108,13 @@ stdout,stderr = command.communicate();
 print(stdout)
 ```
 
-Note that when using the above code, you can shorten it to one line as long as you keep the semi-colons in between 'lines'.
+Note that when using the Python interpreter, you can shorten it to one line as long as you keep the semi-colons in between the 'lines'.
 
 `ls` shows us there is a `flag.txt` file in our directory:
 ![command1](https://user-images.githubusercontent.com/92492482/190877913-ddaae118-67c9-4e12-bfc1-46df689bb660.png)
 
 
-We can now open the file as text and display it using another print() function:
+We can now open the file as text and display it using another `print()` function:
 ```python
 flag = open("./flag.txt", "rt");
 print(flag.read())
