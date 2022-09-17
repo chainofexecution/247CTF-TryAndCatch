@@ -94,7 +94,7 @@ def __init__(
         pin_logging: bool = True,
 ```
 
-Appending `/console` to the end of the site's URL, as if it were another pathed WSGI function like the calculator, provides a Python interpreter prompt to us!
+Appending `/console` to the end of the site's URL, as if it were another application route like the `/calculator`, provides a Python interpreter prompt!
 ![console](https://user-images.githubusercontent.com/92492482/190878137-886d4835-8b51-4334-a8fd-c5c917657787.png)
 
 We can use this prompt to execute Python code on the machine hosting the app.
