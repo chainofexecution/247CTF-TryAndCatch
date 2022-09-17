@@ -57,7 +57,7 @@ if None in (number_1, number_2, operation) or not operation in calculate:
 
 Instead, we can just try to get access to the debugger and use it to help us produce an exception.
 
-We noted earlier the debugger was left running and a quick look at this page from Werkzeug's documentation provides us with a good indicator we are on the right track:
+We noted earlier the debugger was left running and a quick look at [this page](https://werkzeug.palletsprojects.com/en/2.2.x/debug/) from Werkzeug's documentation provides us with a good indicator we are on the right track:
 ![danger](https://user-images.githubusercontent.com/92492482/190875292-d2df541b-c99b-4b10-9db1-52c3feeb6241.png)
 
 We want to look over Werkzeug's code to find out more about how the debugger works as the documentation only shows ways of interaction through the source code.
