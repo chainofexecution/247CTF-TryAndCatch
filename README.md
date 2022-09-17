@@ -70,7 +70,7 @@ To find out where pip has stored Werkzeug's module files we can use the Python i
 We are interested in the `__init__.py` inside the debug directory:
 ![werkzeug_files](https://user-images.githubusercontent.com/92492482/190876779-9506f38d-f7d6-497f-a801-7e460a86e375.png)
 
-We can see in a comment at the start of the `DebuggedApplication()` that there is a variable for a default URL path to the console:
+We can see in a comment at the top of the `DebuggedApplication()` class that there is a variable for a default URL path to the console:
 ```python
 class DebuggedApplication:
     """Enables debugging support for a given application::"""
@@ -80,7 +80,7 @@ class DebuggedApplication:
 """:param console_path: the URL for a general purpose console."""
 ```
 
-If we scroll further down we see the `console_path` variable is by default set to `/console`:
+If we scroll further down to the class entry point we see the `console_path` variable is by default set to `/console`:
 ```python
 def __init__(
         self,
@@ -94,7 +94,7 @@ def __init__(
         pin_logging: bool = True,
 ```
 
-Appending `/console` to the end of the URL provides a Python interpreter prompt to us!
+Appending `/console` to the end of the site's URL, as if it were another pathed WSGI function like the calculator, provides a Python interpreter prompt to us!
 ![console](https://user-images.githubusercontent.com/92492482/190878137-886d4835-8b51-4334-a8fd-c5c917657787.png)
 
 We can use this prompt to execute Python code on the machine hosting the app.
@@ -121,3 +121,14 @@ print(flag.read())
 
 ## 🥳 Flag obtained! 🎉: 
 ![command2](https://user-images.githubusercontent.com/92492482/190878136-996a361d-8c56-4edf-8843-d8b8233c5964.png)
+
+# Summary
+The vulnerability we exploited in this challenge was Arbitrary Code Execution. This particular CTF was not difficult for me because I'm familiar with Python, but I decided to make a write up for it anyways because it was a fun challenge and it shows how security in place (the `safe_cast()` function being the security as it provides a sanitized input and would have prevented us from accessing the debugger by handling exceptions we could have thrown with some malformed input) was esentially rendered useless by allowing us access to the debugger console.
+
+To mitigate this type of attack the developer could have disabled the debugger console for production builds.
+Furthermore, the Werkzeug documentation highly recommends developers set a pin to authenticate with before being allowed access to a debug console to help prevent this type of scenario from happening.
+
+
+
+
+
