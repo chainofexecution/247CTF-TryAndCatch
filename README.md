@@ -62,7 +62,7 @@ We noted earlier the debugger was left enabled and a quick look at [this page](h
 
 ![danger](https://user-images.githubusercontent.com/92492482/190875292-d2df541b-c99b-4b10-9db1-52c3feeb6241.png)
 
-What this cautionary message tells us is if we get access to the debugger console we can execute arbitrary code on the server, so we probably wont even have to trigger an exception to get the flag, and can instead look for it on the server's file system (more on this below)
+What this tells us is if we get access to the debugger console we can execute arbitrary code on the server, so we might not have to trigger an exception to get the flag, and can instead look for it on the server's file system (more on this below)
 
 We want to look over Werkzeug's code to find out more about how the debugger works as the documentation only shows ways of interaction through the source code.
 We can install Werkzeug using pip:
