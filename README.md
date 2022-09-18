@@ -115,7 +115,7 @@ stdout,stderr = command.communicate();
 print(stdout)
 ```
 
-Note that when using the Python interpreter, you can shorten your code to down to one line by using semi-colons to indicate to Python where new 'lines' should start. Python code used in this write up is formatted as multi-line for easier reading, but was input to the interpreter as a single line string.
+Note: Python code used in this write up is formatted as multi-line for easier reading, but was input to the interpreter as single line.
 
 `ls` shows us there is a `flag.txt` file in our directory:
 
