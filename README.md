@@ -41,7 +41,7 @@ if __name__ == "__main__":
     app.run(debug=True)
 ```
 
-We could try to mess with the input of the calculator function to get an exception, but there is error handling present and we would have to trigger an error other than a Value or Type error to get an unmanaged exception instead of the `safe_cast()` function just returning a None type object:
+We could try to mess with the input of the calculator function to get an exception, but there is error handling present and we would have to trigger an exception other than a Value or Type error to get an unmanaged exception instead of the `safe_cast()` function just returning a None type object:
 ```python
 def safe_cast(val, to_type):
     try:
