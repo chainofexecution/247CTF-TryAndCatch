@@ -128,7 +128,7 @@ flag = open("./flag.txt", "rt");
 print(flag.read())
 ```
 
-🥳 Flag obtained! 🎉: 
+# 🥳 Flag obtained! 🎉
 
 ![command2](https://user-images.githubusercontent.com/92492482/190878136-996a361d-8c56-4edf-8843-d8b8233c5964.png)
 
