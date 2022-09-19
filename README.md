@@ -106,7 +106,7 @@ Appending `/console` to the end of the site's URL, as if it were another applica
 ![console](https://user-images.githubusercontent.com/92492482/190878137-886d4835-8b51-4334-a8fd-c5c917657787.png)
 
 We can use this prompt to execute Python code on the machine hosting the app.
-Let's start by figuring out where we are currently in the file system and what files are in our current working directory.
+Let's figure out what files are in our current working directory.
 We can run the `ls` command using the subprocess module, and redirect it's output to a `print()` function:
 ```python
 import subprocess;
